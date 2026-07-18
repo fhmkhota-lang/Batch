@@ -585,14 +585,7 @@ section { position: relative; }
 .chan-note { margin-top: clamp(28px, 3vw, 42px); text-align: center; font-family: var(--font-display); font-weight: 700; font-size: clamp(17px, 2vw, 24px); }
 .chan-note em { font-style: normal; color: var(--pistachio-deep); }
 
-/* market proof line + econ insight callout */
-.market-proof {
-  margin-top: clamp(32px, 4vw, 48px); padding: 22px 28px;
-  border-left: 3px solid var(--pistachio); background: var(--paper);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  font-size: 15px; color: var(--espresso); line-height: 1.6; max-width: 760px;
-}
-.market-proof strong { color: var(--licorice); }
+/* econ insight callout */
 .econ-insight {
   margin-top: 22px; padding: 18px 22px; border-radius: var(--radius-md);
   background: var(--pistachio-soft); font-size: 14px; color: var(--espresso); line-height: 1.55;
@@ -618,22 +611,6 @@ section { position: relative; }
   .split-feature .photo { aspect-ratio: 4 / 3.4; max-height: 62vh; }
   .photo-band .photo { aspect-ratio: 4 / 3; }
 }
-
-/* Events feature within the channels section */
-.events-feature {
-  margin-top: clamp(36px, 4vw, 56px);
-  display: grid; grid-template-columns: 1.25fr 0.75fr; gap: clamp(24px, 3vw, 44px); align-items: center;
-}
-.events-feature .photo { aspect-ratio: 16 / 11; }
-.events-feature h3 { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 2.8vw, 34px); margin: 0 0 12px; line-height: 1.08; }
-.events-feature p { margin: 0 0 18px; color: var(--espresso); font-size: 15px; }
-.events-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.events-tags span {
-  padding: 7px 15px; border-radius: var(--radius-pill);
-  background: var(--paper); border: 1px solid var(--border-subtle);
-  font-family: var(--font-display); font-weight: 700; font-size: 13.5px;
-}
-@media (max-width: 900px) { .events-feature { grid-template-columns: 1fr; } }
 
 /* ============================ Closing ============================ */
 .closing {
@@ -762,9 +739,8 @@ html.static .rail-progress { display: none; }
       <a href="#concept">Concept</a>
       <a href="#why">Model</a>
       <a href="#flavours">Flavours</a>
-      <a href="#market">Market</a>
       <a href="#economics">Economics</a>
-      <a href="#channels">Events</a>
+      <a href="#channels">Channels</a>
       <a href="#vision">Vision</a>
       <a href="#ask">The ask</a>
       <a class="nav-contact-m" href="tel:0835892747">Contact · 083 589 2747</a>
@@ -813,7 +789,7 @@ html.static .rail-progress { display: none; }
   <div class="container">
     <div class="kicker-row reveal">
       <span class="overline">The concept</span>
-      <span class="section-index">01 / 08</span>
+      <span class="section-index">01 / 07</span>
     </div>
     <div class="section-head">
       <h2 class="display split" data-split>Learn the craft. Prove the demand. Then build the brand.</h2>
@@ -846,7 +822,7 @@ html.static .rail-progress { display: none; }
   <div class="container">
     <div class="kicker-row reveal">
       <span class="overline">Why this model</span>
-      <span class="section-index">02 / 08</span>
+      <span class="section-index">02 / 07</span>
     </div>
     <div class="section-head">
       <h2 class="display split" data-split>Built to be hard to lose on.</h2>
@@ -878,7 +854,7 @@ html.static .rail-progress { display: none; }
     <div class="rail-head">
       <div class="kicker-row">
         <span class="overline">The product</span>
-        <span class="section-index">03 / 08</span>
+        <span class="section-index">03 / 07</span>
       </div>
       <h2 class="display" style="margin-top: 14px;">Eight flavours. No shortcuts.</h2>
     </div>
@@ -911,43 +887,12 @@ html.static .rail-progress { display: none; }
   </div>
 </section>
 
-<!-- ============================ 03 · Market numbers ============================ -->
-<section class="section-pad" id="market">
-  <div class="container">
-    <div class="kicker-row reveal">
-      <span class="overline">The opportunity</span>
-      <span class="section-index">04 / 08</span>
-    </div>
-    <div class="section-head">
-      <h2 class="display split" data-split>Ice cream is everywhere. Gelato like this isn't.</h2>
-    </div>
-    <div class="stats">
-      <div class="stat reveal" style="--d:0ms">
-        <b><span data-count data-value="6.5" data-decimals="1" data-prefix="R" data-suffix="bn">R6.5bn</span></b>
-        <em>South African ice-cream category, 2025</em>
-        <span class="src">IMARC Group, 2025 — US$363m at R18/US$</span>
-      </div>
-      <div class="stat reveal" style="--d:110ms">
-        <b><span data-count data-value="5.3" data-decimals="1" data-suffix="%">5.3%</span></b>
-        <em>Global gelato growth — nearly double SA ice cream overall (2.9%)</em>
-        <span class="src">Straits Research; IMARC Group</span>
-      </div>
-      <div class="stat reveal" style="--d:220ms">
-        <b><span data-count data-value="73" data-suffix="%">73%</span></b>
-        <em>Of the world's gelato is made the hand-made, small-batch way</em>
-        <span class="src">Straits Research, 2025</span>
-      </div>
-    </div>
-    <p class="market-proof reveal" style="--d:120ms">Already proven in South Africa: operators like <strong>Gelato Studio</strong> and <strong>Vera Gelato</strong> in Johannesburg built premium gelato brands on the same Italian equipment and supply chain. The comparable gap in the <strong>Western Cape</strong> is the opening.</p>
-  </div>
-</section>
-
 <!-- ============================ 04 · Unit economics ============================ -->
 <section class="section-pad section--sunken" id="economics" style="padding-top: clamp(88px, 10vw, 130px);">
   <div class="container">
     <div class="kicker-row reveal">
       <span class="overline">Unit economics</span>
-      <span class="section-index">05 / 08</span>
+      <span class="section-index">04 / 07</span>
     </div>
     <div class="section-head">
       <h2 class="display split" data-split>Every tub carries its weight.</h2>
@@ -1011,7 +956,7 @@ html.static .rail-progress { display: none; }
   <div class="container">
     <div class="kicker-row reveal">
       <span class="overline">The channels</span>
-      <span class="section-index">06 / 08</span>
+      <span class="section-index">05 / 07</span>
     </div>
     <div class="section-head">
       <h2 class="display split" data-split>Four ways to sell. One tub.</h2>
@@ -1035,26 +980,11 @@ html.static .rail-progress { display: none; }
       </div>
       <div class="chan chan--margin reveal" style="--d:270ms">
         <span class="chan-role">Margin</span>
-        <h4>Events</h4>
-        <p>Markets, events and birthdays — good margin, direct feedback and brand exposure. The fastest read on what people want.</p>
+        <h4>Markets</h4>
+        <p>Good margin, direct customer feedback and brand exposure — the fastest read on what people want.</p>
       </div>
     </div>
-    <p class="chan-note reveal">Direct and events carry the <em>margin</em>. Platform and stockists carry the <em>volume</em>.</p>
-
-    <div class="events-feature">
-      <div class="photo photo--wipe reveal">
-        <img src="assets/events.png" alt="Batch. gelato served at a market event" data-parallax="0.08">
-        <span class="caption-chip">Today's flavours, on the day</span>
-      </div>
-      <div>
-        <span class="overline reveal">Out in the wild</span>
-        <h3 class="reveal" style="--d:100ms">Markets, events &amp; birthdays.</h3>
-        <p class="reveal" style="--d:170ms">The cart travels — weekend markets, private events and birthday parties. Brand exposure that doubles as a margin line.</p>
-        <div class="events-tags reveal" style="--d:240ms">
-          <span>Markets</span><span>Events</span><span>Birthdays</span>
-        </div>
-      </div>
-    </div>
+    <p class="chan-note reveal">Direct and markets carry the <em>margin</em>. Platform and stockists carry the <em>volume</em>.</p>
   </div>
 </section>
 
@@ -1063,7 +993,7 @@ html.static .rail-progress { display: none; }
   <div class="container">
     <div class="kicker-row reveal">
       <span class="overline">The plan</span>
-      <span class="section-index">07 / 08</span>
+      <span class="section-index">06 / 07</span>
     </div>
     <div class="section-head">
       <h2 class="display split" data-split>Twelve months to prove it.</h2>
@@ -1108,7 +1038,7 @@ html.static .rail-progress { display: none; }
   <div class="container">
     <div class="kicker-row reveal">
       <span class="overline">The vision</span>
-      <span class="section-index">08 / 08</span>
+      <span class="section-index">07 / 07</span>
     </div>
     <div class="section-head">
       <h2 class="display split" data-split>One kitchen. A Western Cape brand.</h2>
