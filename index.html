@@ -147,11 +147,57 @@ section { position: relative; }
   height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 24px;
 }
 .nav-logo img { height: 26px; width: auto; }
-.nav-links { display: flex; gap: 26px; align-items: center; }
-.nav-links a { font-size: 13.5px; font-weight: 500; color: var(--espresso); transition: color var(--dur-fast) ease; }
+.nav-links { display: flex; gap: 20px; align-items: center; }
+.nav-links a {
+  position: relative; font-size: 13.5px; font-weight: 500; color: var(--espresso);
+  transition: color var(--dur-fast) ease; padding: 6px 1px; white-space: nowrap;
+}
+.nav-links a::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+  background: var(--pistachio-deep); border-radius: 2px;
+  transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform var(--dur-base) var(--ease-soft);
+}
 .nav-links a:hover { color: var(--licorice); }
+.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+.nav-links a.active { color: var(--licorice); }
+.nav-cta { display: flex; align-items: center; gap: 12px; }
 .nav .btn { padding: 10px 20px; font-size: 13.5px; }
-@media (max-width: 900px) { .nav-links { display: none; } }
+.nav-contact-m { display: none; }
+.nav-toggle {
+  display: none; width: 42px; height: 42px; border: none; background: transparent;
+  cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; padding: 0;
+}
+.nav-toggle span {
+  display: block; width: 22px; height: 2px; background: var(--licorice); border-radius: 2px;
+  margin: 0 auto; transition: transform var(--dur-base) var(--ease-soft), opacity var(--dur-fast) ease;
+}
+.nav.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
+.nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 1040px) {
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 12.5px; }
+}
+@media (max-width: 900px) {
+  .nav-toggle { display: flex; }
+  .nav-contact { display: none; }
+  .nav-links {
+    position: absolute; top: 68px; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: rgba(242,239,231,0.97);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 8px 0; box-shadow: var(--shadow-md);
+    opacity: 0; visibility: hidden; transform: translateY(-8px);
+    transition: opacity var(--dur-base) var(--ease-soft), transform var(--dur-base) var(--ease-soft), visibility 0s var(--dur-base);
+  }
+  .nav.open .nav-links { opacity: 1; visibility: visible; transform: translateY(0); transition: opacity var(--dur-base) var(--ease-soft), transform var(--dur-base) var(--ease-soft), visibility 0s; }
+  .nav-links a { font-size: 15px; padding: 14px 24px; }
+  .nav-links a::after { display: none; }
+  .nav-links a.active { color: var(--pistachio-deep); }
+  .nav-links a.nav-contact-m { display: block; color: var(--pistachio-deep); font-weight: 600; border-top: 1px solid var(--border-subtle); margin-top: 4px; }
+}
 
 .progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 61; pointer-events: none; }
 .progress span { display: block; height: 100%; background: var(--pistachio-deep); transform: scaleX(0); transform-origin: 0 50%; }
@@ -553,6 +599,42 @@ section { position: relative; }
 }
 .econ-insight strong { color: var(--licorice); }
 
+/* ============================ Photo feature + band ============================ */
+.split-feature {
+  display: grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(28px, 4vw, 64px);
+  align-items: center; max-width: var(--container); margin: 0 auto;
+}
+.split-feature .photo { aspect-ratio: 3 / 3.7; }
+.split-feature .overline { color: var(--pistachio-deep); }
+.split-feature h3 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(26px, 3.4vw, 46px); line-height: 1.04; margin: 16px 0 14px;
+}
+.split-feature p { color: var(--espresso); font-size: 15.5px; max-width: 440px; margin: 0; }
+.photo-band { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+.photo-band .photo { aspect-ratio: 16 / 8; }
+@media (max-width: 900px) {
+  .split-feature { grid-template-columns: 1fr; }
+  .split-feature .photo { aspect-ratio: 4 / 3.4; max-height: 62vh; }
+  .photo-band .photo { aspect-ratio: 4 / 3; }
+}
+
+/* Events feature within the channels section */
+.events-feature {
+  margin-top: clamp(36px, 4vw, 56px);
+  display: grid; grid-template-columns: 1.25fr 0.75fr; gap: clamp(24px, 3vw, 44px); align-items: center;
+}
+.events-feature .photo { aspect-ratio: 16 / 11; }
+.events-feature h3 { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 2.8vw, 34px); margin: 0 0 12px; line-height: 1.08; }
+.events-feature p { margin: 0 0 18px; color: var(--espresso); font-size: 15px; }
+.events-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.events-tags span {
+  padding: 7px 15px; border-radius: var(--radius-pill);
+  background: var(--paper); border: 1px solid var(--border-subtle);
+  font-family: var(--font-display); font-weight: 700; font-size: 13.5px;
+}
+@media (max-width: 900px) { .events-feature { grid-template-columns: 1fr; } }
+
 /* ============================ Closing ============================ */
 .closing {
   position: relative; min-height: 96svh;
@@ -676,14 +758,23 @@ html.static .rail-progress { display: none; }
     <a class="nav-logo" href="#top" aria-label="Batch. — back to top">
       <img src="assets/batch-logo-black.png" alt="Batch.">
     </a>
-    <div class="nav-links">
+    <div class="nav-links" id="navLinks">
       <a href="#concept">Concept</a>
+      <a href="#why">Model</a>
       <a href="#flavours">Flavours</a>
+      <a href="#market">Market</a>
       <a href="#economics">Economics</a>
-      <a href="#plan">Plan</a>
+      <a href="#channels">Events</a>
       <a href="#vision">Vision</a>
+      <a href="#ask">The ask</a>
+      <a class="nav-contact-m" href="tel:0835892747">Contact · 083 589 2747</a>
     </div>
-    <a class="btn btn--dark" href="#ask">The ask</a>
+    <div class="nav-cta">
+      <a class="btn btn--dark nav-contact" href="tel:0835892747">Contact</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -803,6 +894,20 @@ html.static .rail-progress { display: none; }
       <div class="rail-card rail-card--cap"><p>Halaal certified.<br>Real ingredients.<br><em>Made in small batches.</em></p></div>
     </div>
     <div class="rail-progress" aria-hidden="true"><i id="railProgress"></i></div>
+  </div>
+</section>
+
+<!-- ============================ Product feature (cone) ============================ -->
+<section class="section-pad">
+  <div class="split-feature">
+    <div class="photo photo--wipe reveal">
+      <img src="assets/cup-and-cone.png" alt="A hand holding a Batch. gelato cone" data-parallax="0.08">
+    </div>
+    <div>
+      <span class="overline reveal">Scooped to order</span>
+      <h3 class="reveal" style="--d:100ms">A scoop now. A tub for later.</h3>
+      <p class="reveal" style="--d:180ms">Cones and cups at the counter, 175ml and 500ml tubs to take home — the same small-batch gelato, however you want it.</p>
+    </div>
   </div>
 </section>
 
@@ -930,11 +1035,26 @@ html.static .rail-progress { display: none; }
       </div>
       <div class="chan chan--margin reveal" style="--d:270ms">
         <span class="chan-role">Margin</span>
-        <h4>Markets</h4>
-        <p>Good margin, direct customer feedback and brand exposure — the fastest read on what people want.</p>
+        <h4>Events</h4>
+        <p>Markets, events and birthdays — good margin, direct feedback and brand exposure. The fastest read on what people want.</p>
       </div>
     </div>
-    <p class="chan-note reveal">Direct and markets carry the <em>margin</em>. Platform and stockists carry the <em>volume</em>.</p>
+    <p class="chan-note reveal">Direct and events carry the <em>margin</em>. Platform and stockists carry the <em>volume</em>.</p>
+
+    <div class="events-feature">
+      <div class="photo photo--wipe reveal">
+        <img src="assets/events.png" alt="Batch. gelato served at a market event" data-parallax="0.08">
+        <span class="caption-chip">Today's flavours, on the day</span>
+      </div>
+      <div>
+        <span class="overline reveal">Out in the wild</span>
+        <h3 class="reveal" style="--d:100ms">Markets, events &amp; birthdays.</h3>
+        <p class="reveal" style="--d:170ms">The cart travels — weekend markets, private events and birthday parties. Brand exposure that doubles as a margin line.</p>
+        <div class="events-tags reveal" style="--d:240ms">
+          <span>Markets</span><span>Events</span><span>Birthdays</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1012,7 +1132,11 @@ html.static .rail-progress { display: none; }
         </div>
       </div>
     </div>
-    <div class="towns">
+    <div class="photo photo--wipe reveal" style="aspect-ratio: 16 / 7.5; margin-top: clamp(36px, 4vw, 56px);">
+      <img src="assets/shop-interior-counter.png" alt="Inside a Batch. gelato counter" data-parallax="0.08">
+      <span class="caption-chip">The counter, brought to life</span>
+    </div>
+    <div class="towns" style="margin-top: clamp(36px, 4vw, 56px);">
       <span class="town reveal" style="--d:0ms">Sea Point</span>
       <span class="town reveal" style="--d:60ms">Claremont</span>
       <span class="town reveal" style="--d:120ms">Constantia</span>
@@ -1109,10 +1233,10 @@ html.static .rail-progress { display: none; }
       <div><b>R345,000</b><em>total for Phase 1</em></div>
     </div>
     <div class="closing-actions reveal" style="--d:320ms">
-      <a class="btn btn--pistachio btn--lg" href="mailto:hello@batchgelato.com?subject=Batch.%20investor%20conversation">Start the conversation</a>
+      <a class="btn btn--pistachio btn--lg" href="tel:0835892747">Call us · 083 589 2747</a>
       <a class="btn btn--outline-light btn--lg" href="mailto:hello@batchgelato.com?subject=Batch.%20deck%20request">Request the full deck</a>
     </div>
-    <p class="fine reveal" style="--d:400ms">hello@batchgelato.com · Cape Town, South Africa</p>
+    <p class="fine reveal" style="--d:400ms">083 589 2747 · hello@batchgelato.com · Cape Town, South Africa</p>
   </div>
 </section>
 
@@ -1315,6 +1439,43 @@ html.static .rail-progress { display: none; }
       target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
     });
   });
+
+  /* ---------- Mobile menu toggle ---------- */
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  function closeMenu() {
+    nav.classList.remove('open');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+  }
+  if (navToggle) {
+    navToggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  if (navLinks) navLinks.addEventListener('click', function (e) { if (e.target.closest('a')) closeMenu(); });
+  document.addEventListener('click', function (e) {
+    if (nav.classList.contains('open') && !e.target.closest('.nav')) closeMenu();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+
+  /* ---------- Scroll-spy: highlight the active tab ---------- */
+  var spyTargets = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'))
+    .map(function (a) { return { link: a, el: document.getElementById(a.getAttribute('href').slice(1)) }; })
+    .filter(function (t) { return t.el; });
+  function updateSpy() {
+    var pos = window.scrollY + window.innerHeight * 0.32;
+    var current = null;
+    for (var i = 0; i < spyTargets.length; i++) {
+      if (spyTargets[i].el.offsetTop <= pos) current = spyTargets[i];
+    }
+    for (var j = 0; j < spyTargets.length; j++) {
+      spyTargets[j].link.classList.toggle('active', spyTargets[j] === current);
+    }
+  }
+  window.addEventListener('scroll', updateSpy, { passive: true });
+  window.addEventListener('resize', updateSpy);
+  updateSpy();
 })();
 </script>
 </body>
