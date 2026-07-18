@@ -512,6 +512,47 @@ section { position: relative; }
 .risk b { display: block; font-family: var(--font-display); font-weight: 700; font-size: 17px; margin-bottom: 6px; }
 .risk p { margin: 0; font-size: 13px; color: var(--espresso); line-height: 1.55; }
 
+/* ============================ Why-this-model thesis (dark) ============================ */
+.thesis { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 48px); margin-top: clamp(36px, 4vw, 56px); }
+.thesis-item { border-top: 1px solid rgba(242,239,231,.18); padding-top: 24px; }
+.thesis-num { font-family: var(--font-display); font-weight: 800; font-size: clamp(40px, 4.4vw, 60px); line-height: 1; color: var(--pistachio); display: block; }
+.thesis-item h3 { margin: 16px 0 10px; font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2vw, 24px); color: var(--cream); }
+.thesis-item p { margin: 0; font-size: 14.5px; line-height: 1.6; color: rgba(242,239,231,.72); }
+
+/* ============================ Channels ============================ */
+.chan-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.chan {
+  background: var(--paper); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);
+  padding: 28px 26px 24px; display: flex; flex-direction: column; gap: 12px;
+  transition: transform var(--dur-base) var(--ease-soft), box-shadow var(--dur-base) ease;
+}
+@media (hover: hover) and (pointer: fine) { .chan:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); } }
+.chan .chan-role {
+  align-self: flex-start; font-size: 10.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: var(--radius-pill);
+}
+.chan--margin .chan-role { background: var(--pistachio-soft); color: var(--pistachio-deep); }
+.chan--volume .chan-role { background: var(--caramel-soft); color: var(--caramel-deep); }
+.chan h4 { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 20px; }
+.chan p { margin: 0; font-size: 13.5px; color: var(--espresso); line-height: 1.55; }
+.chan-note { margin-top: clamp(28px, 3vw, 42px); text-align: center; font-family: var(--font-display); font-weight: 700; font-size: clamp(17px, 2vw, 24px); }
+.chan-note em { font-style: normal; color: var(--pistachio-deep); }
+
+/* market proof line + econ insight callout */
+.market-proof {
+  margin-top: clamp(32px, 4vw, 48px); padding: 22px 28px;
+  border-left: 3px solid var(--pistachio); background: var(--paper);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 15px; color: var(--espresso); line-height: 1.6; max-width: 760px;
+}
+.market-proof strong { color: var(--licorice); }
+.econ-insight {
+  margin-top: 22px; padding: 18px 22px; border-radius: var(--radius-md);
+  background: var(--pistachio-soft); font-size: 14px; color: var(--espresso); line-height: 1.55;
+}
+.econ-insight strong { color: var(--licorice); }
+
 /* ============================ Closing ============================ */
 .closing {
   position: relative; min-height: 96svh;
@@ -579,9 +620,11 @@ footer {
   .be-row { grid-template-columns: repeat(2, 1fr); }
   .seasons { grid-template-columns: repeat(2, 1fr); }
   .risks { grid-template-columns: repeat(2, 1fr); }
+  .thesis { grid-template-columns: 1fr; }
+  .chan-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 560px) {
-  .seasons, .risks, .be-row { grid-template-columns: 1fr; }
+  .seasons, .risks, .be-row, .chan-grid { grid-template-columns: 1fr; }
 }
 
 /* ============================ Reduced motion / static mode ============================ */
@@ -594,7 +637,7 @@ footer {
   .reveal, .split .w > span { opacity: 1; transform: none; transition: none; }
   .photo--wipe { clip-path: none; transition: none; }
   .photo [data-parallax] { transform: none; }
-  .rail-card img, .concept-card, .town { transition: none; }
+  .rail-card img, .concept-card, .town, .chan { transition: none; }
   .tub-bar .cost, .tub-bar .profit { transform: scaleX(1); transition: none; }
   .mrow .bar i, .item .bar i { transform: scaleX(var(--w)); transition: none; }
   .marquee-track { transform: none; }
@@ -653,7 +696,7 @@ html.static .rail-progress { display: none; }
   <div class="hero-content" id="heroContent">
     <span class="overline" data-stage="1">Small batch gelato makers</span>
     <img class="hero-mark" src="assets/batch-logo-cream.png" alt="Batch. Gelato" data-stage="2">
-    <p class="hero-line" data-stage="3">Italian-sourced gelato. Made in small batches.</p>
+    <p class="hero-line" data-stage="3">Small batches, big memories.</p>
     <div class="hero-meta" data-stage="4">
       <span>Investor overview</span><span class="dot"></span>
       <span>July 2026</span><span class="dot"></span>
@@ -679,7 +722,7 @@ html.static .rail-progress { display: none; }
   <div class="container">
     <div class="kicker-row reveal">
       <span class="overline">The concept</span>
-      <span class="section-index">01 / 06</span>
+      <span class="section-index">01 / 08</span>
     </div>
     <div class="section-head">
       <h2 class="display split" data-split>Learn the craft. Prove the demand. Then build the brand.</h2>
@@ -707,13 +750,44 @@ html.static .rail-progress { display: none; }
   </div>
 </section>
 
-<!-- ============================ 02 · Flavour rail ============================ -->
+<!-- ============================ 02 · Why this model (dark) ============================ -->
+<section class="section-pad section--inverse" id="why">
+  <div class="container">
+    <div class="kicker-row reveal">
+      <span class="overline">Why this model</span>
+      <span class="section-index">02 / 08</span>
+    </div>
+    <div class="section-head">
+      <h2 class="display split" data-split>Built to be hard to lose on.</h2>
+      <p class="lede reveal" style="--d:120ms">Validate before scaling. Phase 1 proves the product and the demand at minimal fixed cost — the store is the return engine, and the tub phase de-risks it.</p>
+    </div>
+    <div class="thesis">
+      <div class="thesis-item reveal" style="--d:0ms">
+        <span class="thesis-num">01</span>
+        <h3>Near-zero fixed costs</h3>
+        <p>Home production. No rent, no staff, no salary drawn — the operator keeps a full-time job. The business can trade slowly, or pause, at almost no carrying cost.</p>
+      </div>
+      <div class="thesis-item reveal" style="--d:120ms">
+        <span class="thesis-num">02</span>
+        <h3>Made ahead, frozen</h3>
+        <p>Gelato is churned in batches and sold over the following weeks — about 10 hours of production a week. Not tied to daily demand, so it fits around a job and later makes each store simple to run.</p>
+      </div>
+      <div class="thesis-item reveal" style="--d:240ms">
+        <span class="thesis-num">03</span>
+        <h3>A hard downside floor</h3>
+        <p>The biggest cost is one imported Italian machine with an established resale market. If demand never lands, the equipment is resold to recover most of the investment. Exposure is capped, not open-ended.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 03 · Flavour rail ============================ -->
 <section class="rail" id="flavours">
   <div class="rail-sticky">
     <div class="rail-head">
       <div class="kicker-row">
         <span class="overline">The product</span>
-        <span class="section-index">02 / 06</span>
+        <span class="section-index">03 / 08</span>
       </div>
       <h2 class="display" style="margin-top: 14px;">Eight flavours. No shortcuts.</h2>
     </div>
@@ -737,7 +811,7 @@ html.static .rail-progress { display: none; }
   <div class="container">
     <div class="kicker-row reveal">
       <span class="overline">The opportunity</span>
-      <span class="section-index">03 / 06</span>
+      <span class="section-index">04 / 08</span>
     </div>
     <div class="section-head">
       <h2 class="display split" data-split>Ice cream is everywhere. Gelato like this isn't.</h2>
@@ -759,6 +833,7 @@ html.static .rail-progress { display: none; }
         <span class="src">Straits Research, 2025</span>
       </div>
     </div>
+    <p class="market-proof reveal" style="--d:120ms">Already proven in South Africa: operators like <strong>Gelato Studio</strong> and <strong>Vera Gelato</strong> in Johannesburg built premium gelato brands on the same Italian equipment and supply chain. The comparable gap in the <strong>Western Cape</strong> is the opening.</p>
   </div>
 </section>
 
@@ -767,7 +842,7 @@ html.static .rail-progress { display: none; }
   <div class="container">
     <div class="kicker-row reveal">
       <span class="overline">Unit economics</span>
-      <span class="section-index">04 / 06</span>
+      <span class="section-index">05 / 08</span>
     </div>
     <div class="section-head">
       <h2 class="display split" data-split>Every tub carries its weight.</h2>
@@ -802,7 +877,8 @@ html.static .rail-progress { display: none; }
             <span><strong>58% margin</strong></span>
           </div>
         </div>
-        <p class="econ-note">Market reference: average unit price at other gelato brands ≈ R61.90 incl. VAT. VAT doesn't apply in Phase 1 (turnover under R1m).</p>
+        <p class="econ-insight"><strong>The format lever:</strong> a large tub holds 2.9× the gelato, but packaging rises only R7.00 → R10.00. Bigger formats lift rand-per-sale at the same margin — R87 profit versus R34.</p>
+        <p class="econ-note">Market reference: comparable brands sell a single serving at ≈ R61.90 incl. VAT. VAT doesn't apply in Phase 1 (turnover under R1m). With no rent, staff or salary, gross sits close to net.</p>
       </div>
     </div>
   </div>
@@ -825,12 +901,49 @@ html.static .rail-progress { display: none; }
   </div>
 </section>
 
-<!-- ============================ 05 · 12-month plan ============================ -->
+<!-- ============================ 06 · Channels ============================ -->
+<section class="section-pad section--sunken" id="channels">
+  <div class="container">
+    <div class="kicker-row reveal">
+      <span class="overline">The channels</span>
+      <span class="section-index">06 / 08</span>
+    </div>
+    <div class="section-head">
+      <h2 class="display split" data-split>Four ways to sell. One tub.</h2>
+      <p class="lede reveal" style="--d:120ms">A tub sold is a tub sold — break-even doesn't care which channel. What differs is the margin and the reach, so the mix gets tuned to what the market responds to.</p>
+    </div>
+    <div class="chan-grid">
+      <div class="chan chan--margin reveal" style="--d:0ms">
+        <span class="chan-role">Margin</span>
+        <h4>Online &amp; social</h4>
+        <p>Highest margin — no commission. Builds the audience and following the store will later depend on.</p>
+      </div>
+      <div class="chan chan--volume reveal" style="--d:90ms">
+        <span class="chan-role">Volume</span>
+        <h4>Uber Eats</h4>
+        <p>Immediate reach into a large base. The ~25–30% platform fee is priced in, not absorbed. Cold chain handled with dry ice.</p>
+      </div>
+      <div class="chan chan--volume reveal" style="--d:180ms">
+        <span class="chan-role">Visibility</span>
+        <h4>Stockists</h4>
+        <p>Lower margin, but steady baseline volume and shelf presence — branded freezers placed as it scales.</p>
+      </div>
+      <div class="chan chan--margin reveal" style="--d:270ms">
+        <span class="chan-role">Margin</span>
+        <h4>Markets</h4>
+        <p>Good margin, direct customer feedback and brand exposure — the fastest read on what people want.</p>
+      </div>
+    </div>
+    <p class="chan-note reveal">Direct and markets carry the <em>margin</em>. Platform and stockists carry the <em>volume</em>.</p>
+  </div>
+</section>
+
+<!-- ============================ 07 · 12-month plan ============================ -->
 <section class="section-pad" id="plan">
   <div class="container">
     <div class="kicker-row reveal">
       <span class="overline">The plan</span>
-      <span class="section-index">05 / 06</span>
+      <span class="section-index">07 / 08</span>
     </div>
     <div class="section-head">
       <h2 class="display split" data-split>Twelve months to prove it.</h2>
@@ -875,7 +988,7 @@ html.static .rail-progress { display: none; }
   <div class="container">
     <div class="kicker-row reveal">
       <span class="overline">The vision</span>
-      <span class="section-index">06 / 06</span>
+      <span class="section-index">08 / 08</span>
     </div>
     <div class="section-head">
       <h2 class="display split" data-split>One kitchen. A Western Cape brand.</h2>
@@ -889,9 +1002,9 @@ html.static .rail-progress { display: none; }
       <div class="reveal" id="marginBars" style="--d:120ms">
         <h3 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(22px, 2.4vw, 28px); margin: 0 0 6px;">Three streams, strong margins.</h3>
         <div class="margins">
-          <div class="mrow"><b><span>Coffee — repeat walk-ins</span><span>~75%</span></b><div class="bar"><i style="--w:0.75; --d:0ms"></i></div></div>
-          <div class="mrow"><b><span>Gelato — the main attraction</span><span>~63%</span></b><div class="bar"><i style="--w:0.63; --d:130ms"></i></div></div>
-          <div class="mrow"><b><span>Desserts &amp; pastries — basket value</span><span>~60%</span></b><div class="bar"><i style="--w:0.60; --d:260ms"></i></div></div>
+          <div class="mrow"><b><span>Coffee — year-round, daily frequency</span><span>~75%</span></b><div class="bar"><i style="--w:0.75; --d:0ms"></i></div></div>
+          <div class="mrow"><b><span>Gelato — the signature</span><span>~63%</span></b><div class="bar"><i style="--w:0.63; --d:130ms"></i></div></div>
+          <div class="mrow"><b><span>Desserts &amp; waffles — basket value</span><span>~60%</span></b><div class="bar"><i style="--w:0.60; --d:260ms"></i></div></div>
         </div>
         <div class="blend">
           <span>Blended gross margin per customer</span>
@@ -917,7 +1030,7 @@ html.static .rail-progress { display: none; }
   <div class="container">
     <div class="ask-head">
       <span class="overline reveal">The ask · Phase 1</span>
-      <div class="big-num reveal" style="--d:100ms">R<span data-count data-value="350" data-group>350</span><small>k</small></div>
+      <div class="big-num reveal" style="--d:100ms">R<span data-count data-value="345" data-group>345</span><small>k</small></div>
       <p class="ask-sub reveal" style="--d:200ms">Released in two stages. Break-even inside 12 months.</p>
     </div>
     <div class="stages" id="stages">
@@ -939,11 +1052,11 @@ html.static .rail-progress { display: none; }
       <div class="stage stage--later reveal" style="--d:150ms">
         <div class="stage-head">
           <h3>Stage 2 — later<small>Once demand is proven</small></h3>
-          <b>R90,000</b>
+          <b>R85,000</b>
         </div>
         <div class="items">
           <div class="item"><b><span>Additional freezing capacity</span><span>R60,000</span></b><div class="bar"><i style="--w:1; --d:0ms"></i></div></div>
-          <div class="item"><b><span>Marketing / launch push</span><span>R15,000</span></b><div class="bar"><i style="--w:0.25; --d:90ms"></i></div></div>
+          <div class="item"><b><span>Marketing / launch push</span><span>R10,000</span></b><div class="bar"><i style="--w:0.167; --d:90ms"></i></div></div>
           <div class="item"><b><span>Contingency</span><span>R15,000</span></b><div class="bar"><i style="--w:0.25; --d:180ms"></i></div></div>
         </div>
         <p class="stage-note">Capacity spend decided after R&amp;D, released only when demand is proven.</p>
@@ -993,7 +1106,7 @@ html.static .rail-progress { display: none; }
     <h2 class="reveal" style="--d:120ms">A high-margin food business, made for good moments and good memories.</h2>
     <div class="closing-nums reveal" style="--d:220ms">
       <div><b>R260,000</b><em>to begin production</em></div>
-      <div><b>R350,000</b><em>total for Phase 1</em></div>
+      <div><b>R345,000</b><em>total for Phase 1</em></div>
     </div>
     <div class="closing-actions reveal" style="--d:320ms">
       <a class="btn btn--pistachio btn--lg" href="mailto:hello@batchgelato.com?subject=Batch.%20investor%20conversation">Start the conversation</a>
